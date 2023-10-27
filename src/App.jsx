@@ -51,34 +51,72 @@ function App() {
 
   return (
     <div>
-      <button onClick={handleAddRow}>New</button>
+      <button style={{backgroundColor: 'grey', margin: '10px'}} onClick={handleAddRow}>New</button>
       {rows.map((row, index) => (
         <div key={index}>
+
+          <label style={{float: 'left', margin: '10px'}}>
+          Product Name <br></br>
           <input
+            style={{padding: '10px'}}
             type="text"
             placeholder="Product Name"
             value={row.name}
             onChange={(e) => handleNameChange(index, e.target.value)}
           />
+          </label>
+
+          <label style={{float: 'left', margin: '10px'}}>
+          Product Price <br></br>
           <input
+            style={{padding: '10px'}}
             type="number"
             placeholder="Product Price"
             value={row.price}
             onChange={(e) => handlePriceChange(index, e.target.value)}
           />
+          </label>
+          
+          <label style={{float: 'left', margin: '10px'}}>
+          Quantity <br></br>
           <input
+            style={{padding: '10px'}}
             type="number"
             placeholder="Quantity"
             value={row.qty}
             onChange={(e) => handleQtyChange(index, e.target.value)}
           />
-          <span>Total: {row.total}</span>
+          </label>
+
+          <label style={{float: 'left', margin: '10px'}}>
+          Total <br></br>
+          <input
+            style={{padding: '10px'}}
+            disabled
+            type="number"
+            placeholder="Total"
+            value={row.total}
+          />
+          </label>
+          
           {rows.length > 1 && (
-            <button onClick={() => handleDeleteRow(index)}>Delete</button>
+            <button style={{backgroundColor: 'red', margin: '30px'}} onClick={() => handleDeleteRow(index)}>Delete</button>
           )}
+
         </div>
       ))}
-      <div>Grand Total: {grandTotal}</div>
+
+      <label style={{float: 'right', margin: '10px'}}>
+        Grand Total <br></br>
+        <input
+          style={{padding: '10px'}}
+          disabled
+          type="number"
+          placeholder="Grand Total"
+          value={grandTotal}
+        />
+      </label>
+      
     </div>
   );
 }
